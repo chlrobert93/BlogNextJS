@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import Logo from './logo';
 
+import classes from './main-navigation.module.css';
+
 function MianNavigation() {
   return (
-    <header>
+    <header className={classes.header}>
         {/* Para cualquier elemento */}
       <Link href='/'>
         <a>

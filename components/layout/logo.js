@@ -1,8 +1,8 @@
+import classes from './logo.module.css';
+
 function Logo (){
     return(
-        <div>
-            <h2>Eder! NextJS Blog</h2>
-        </div>
+       <div clasName={classes.logo}> Eder Next Blog</div>
     );
 }
 
