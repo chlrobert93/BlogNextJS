@@ -4,6 +4,7 @@ import Logo from './logo';
 function MianNavigation() {
   return (
     <header>
+        {/* Para cualquier elemento */}
       <Link href='/'>
         <a>
           <Logo />
