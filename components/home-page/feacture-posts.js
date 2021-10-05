@@ -1,5 +1,6 @@
+import classes from './feacture-posts.module.css';
 
-function Feacture (){
+function FeacturePosts (){
 
     return(
         <div>
@@ -7,4 +8,4 @@ function Feacture (){
         </div>
     );
 }
-export default Feacture;
+export default FeacturePosts;
