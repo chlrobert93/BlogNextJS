@@ -2,7 +2,7 @@ import classes from './logo.module.css';
 
 function Logo (){
     return(
-       <div clasName={classes.logo}> Eder Next Blog</div>
+       <div className={classes.logo}> Eder Next Blog</div>
     );
 }
 
