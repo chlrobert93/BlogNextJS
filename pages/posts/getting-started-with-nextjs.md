@@ -1,11 +1,11 @@
-------------
-title: 'Empezando con NextJS'
+---
+title: 'empezando-con-nextjs'
 date: '2022-10-15'
 image: 'getting-started-nextjs.png'
 excerpt: 'NextJS es un framework de React para la producción: hace que la construcción de aplicaciones y sitios React completos sea muy fácil.'
 isFeactured: true
 
---------------
+---
 
 
 
