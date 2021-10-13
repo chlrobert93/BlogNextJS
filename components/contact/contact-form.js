@@ -4,15 +4,15 @@ import classes from './contact-form.module.css';
 
 
 function ContactForm() {
-
+   //Para leer el valor del formulario
    const [enteredEmail, setEnteredEmail] = useState('');
    const [enteredName, setEnteredName] = useState('');
    const [enteredMessage, setEnteredMessage] = useState('');
-  console.log(enteredMessage)
+
 
    function sendMessageHandler(event){
        event.preventDefault();
-
+       console.log(enteredEmail)
        //optional: add client-side validation
        fetch('/api/contact',{
            method: 'POST',
@@ -26,7 +26,7 @@ function ContactForm() {
            //Encabezado del tipo  de contenid en la aplicación JSON
            //Para ahcer  que el backend sea consistente de que esta solicitud llevará datos JSON
            headers:{
-            'Content-Type': 'application/jsoN',
+            'Content-Type': 'application/json ',
           }
        });
    }
