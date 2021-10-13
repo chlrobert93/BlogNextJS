@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
 import Hero from '../components/home-page/hero';
 import FeacturePosts from '../components/home-page/feacture-posts';
+import { getFeacturedPosts } from '../lib/posts-util';
 
-function HomePage() {
+function HomePage(props) {
 
-  const DUMMY_POSTS = [
+  /* const DUMMY_POSTS = [
     {
       slug: 'empezando-con-nextjs1',
       title: 'Empezando con NextJS',
@@ -38,13 +39,24 @@ function HomePage() {
       date: '2022-02-10',
     }
 ]
-
+ */
   return (
     <Fragment>
       <Hero />
-      <FeacturePosts posts={DUMMY_POSTS} />
+      <FeacturePosts posts={props.posts} />
     </Fragment>
   );
 }
 
+
+export function getStaticProps(){
+  const feacturedPosts = getFeacturedPosts();
+
+  return{
+    props:{
+      posts: feacturedPosts,
+    },
+    revalidate: 60,
+  }
+}
 export default HomePage;
