@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-
+    
 async function handler(req, res){
     console.log(req.method)
     //Verificar si el método es igual a post
@@ -37,7 +37,7 @@ async function handler(req, res){
 
         try{
             client = await MongoClient.connect(
-                '   '
+                ''
             );
         
         }catch (error) {

@@ -81,7 +81,7 @@ function ContactForm() {
         notification = {
            status: 'pending',
            title: 'Sending message...',
-           message: 'Your message is on its way!'
+           message: 'Tu mensaje está en camino!'
          };
        }
 
@@ -89,7 +89,7 @@ function ContactForm() {
          notification = {
            status: 'success',
            title: 'Success!',
-           message: 'Message sent succesfully!',
+           message: 'Mensaje enviado con éxito!',
          };
        }
 
