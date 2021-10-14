@@ -6,9 +6,10 @@ class MyDocument extends Document {
       <Html lang='es'>
         <Head />
         <body>
-          <div id='overlays' />
           <Main />
           <NextScript />
+          //Para portal
+          <div id="notifications"></div>
         </body>
       </Html>
     );
