@@ -37,7 +37,7 @@ async function handler(req, res){
 
         try{
             client = await MongoClient.connect(
-                'mongodb+srv://ApiRutas:Tambores138*@apiderutasnextjs.chpsn.mongodb.net/blogdb?retryWrites=true&w=majority        '
+                '   '
             );
         
         }catch (error) {

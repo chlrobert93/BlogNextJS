@@ -1,35 +1,106 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import classes from './contact-form.module.css';
+import Notification from '../ui/notification';
 
+
+  //Función envio de datos de contacto asíncrono
+  //contactDetails------> Esperar recibir los datos de contacto
+  async function sendContactData(contactDetails) {
+    //optional: add client-side validation
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      //Caden JSON un objecto
+      body: JSON.stringify(contactDetails),
+      //Encabezado del tipo  de contenid en la aplicación JSON
+      //Para ahcer  que el backend sea consistente de que esta solicitud llevará datos JSON
+      headers: {
+        "Content-Type": "application/json ",
+      },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Something went wrong!");
+    }
+
+  }
 
 function ContactForm() {
    //Para leer el valor del formulario
    const [enteredEmail, setEnteredEmail] = useState('');
    const [enteredName, setEnteredName] = useState('');
    const [enteredMessage, setEnteredMessage] = useState('');
+   const [requestStatus, setRequestStatus] = useState(); // 'pending', 'succes', 'error'
+   const [requestError, setRequestError] = useState();
+
+   useEffect(() => {
+     if(requestStatus === 'success' || requestStatus == 'error'){
+        
+      const timer = setTimeout(() =>{
+         setRequestError(null);
+         setRequestStatus(null);
+       },3000);
+
+       return () => clearTimeout(timer);
+     }
+   },[requestStatus])
 
 
-   function sendMessageHandler(event){
+   async function sendMessageHandler(event){
        event.preventDefault();
-       console.log(enteredEmail)
+       //console.log(enteredEmail)
+
        //optional: add client-side validation
-       fetch('/api/contact',{
-           method: 'POST',
-           //Caden JSON un objecto
-           body: JSON.stringify({
-               email: enteredEmail,
-               name: enteredName,
-               message: enteredMessage,
-           }),
-               
-           //Encabezado del tipo  de contenid en la aplicación JSON
-           //Para ahcer  que el backend sea consistente de que esta solicitud llevará datos JSON
-           headers:{
-            'Content-Type': 'application/json ',
-          }
-       });
+
+       setRequestStatus('pending');
+
+       try{
+        await sendContactData({
+          email: enteredEmail,
+          name: enteredName,
+          message: enteredMessage
+        });
+          setRequestStatus('success');
+          setEnteredMessage('');
+          setEnteredEmail('');
+          setEnteredName('');
+       }catch(error){
+          setRequestError(error.message);
+          setRequestStatus('error');
+       }
    }
+
+   
+   //Obtener los datos de mi notificación
+
+       let notification;
+
+       if(requestStatus === 'pending'){
+        notification = {
+           status: 'pending',
+           title: 'Sending message...',
+           message: 'Your message is on its way!'
+         };
+       }
+
+       if(requestStatus == 'success'){
+         notification = {
+           status: 'success',
+           title: 'Success!',
+           message: 'Message sent succesfully!',
+         };
+       }
+
+       if(requestStatus === 'error'){
+        notification = {
+          status: 'error',
+          title: 'Error!',
+          message: requestError,
+
+        };
+       }
 
   return (
     <section className={classes.contact}>
@@ -72,6 +143,13 @@ function ContactForm() {
         <button>Enviar Mensaje</button>
       </div>
     </form>
+    {notification  && (
+      <Notification
+        status={notification.status}
+        title={notification.title}
+        message={notification.message}
+       />
+    )}
   </section>
   );
 }
