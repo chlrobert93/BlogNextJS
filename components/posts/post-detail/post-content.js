@@ -21,7 +21,7 @@ const DUMMY_POST = {
 
 
 function PostContent(props) {
-   console.log(props)
+   //console.log(props)
   const { post } = props;
  // console.log(post.slug);
   

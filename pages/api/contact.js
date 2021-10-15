@@ -1,7 +1,8 @@
 import { MongoClient } from 'mongodb';
     
 async function handler(req, res){
-    console.log(req.method)
+    
+
     //Verificar si el método es igual a post
     if(req.method === 'POST'){const expReg =
         /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -32,13 +33,12 @@ async function handler(req, res){
             message
         };
               
-        console.log(newMessage)
+       // console.log(newMessage)
         let client;
 
+         const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.chpsn.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
         try{
-            client = await MongoClient.connect(
-                ''
-            );
+            client = await MongoClient.connect(connectionString);
         
         }catch (error) {
             res.status(500).json({ message: 'Could not conect to database,'});

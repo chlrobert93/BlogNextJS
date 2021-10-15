@@ -8,7 +8,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          //Para portal
+          {/* Para portal */}
           <div id="notifications"></div>
         </body>
       </Html>
