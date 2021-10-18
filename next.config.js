@@ -23,9 +23,9 @@ module.exports = (phase) => {
   return {
     env: {
       mongodb_username: '',
-      mongodb_password: '',
-      mongodb_clustername: '',
-      mongodb_database: '',
+        mongodb_password: '',
+        mongodb_clustername: '',
+        mongodb_database: '',
     },
   };
 };

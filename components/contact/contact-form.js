@@ -129,7 +129,7 @@ function ContactForm() {
         </div>
       </div>
       <div className={classes.control}>
-        <label htmlFor='message'>Menssage</label>
+        <label htmlFor='message'>Mensaje</label>
         <textarea
           id='message'
           rows='5'
