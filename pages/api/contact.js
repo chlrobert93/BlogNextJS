@@ -7,16 +7,12 @@ async function handler(req, res){
     if(req.method === 'POST'){const expReg =
         /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
         const { email, name, message } = req.body;
-         
-         /* console.log(email)
-         console.log(name)
-         console.log(message) */
-         const esValido = expReg.test(email);
 
+         const esValido = expReg.test(email);
 
         if(
            !email ||
-  /*          !esValido || */
+           /*!esValido || */
            !name ||
            name.trim() === '' ||
            !message ||
@@ -33,7 +29,6 @@ async function handler(req, res){
             message
         };
               
-       // console.log(newMessage)
         let client;
 
          const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.chpsn.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
@@ -62,9 +57,6 @@ async function handler(req, res){
 
         client.close();
        
-
-        //sconsole.log(newMessage);
-
         res
         .status(201)
         .json({ message: 'Mensjae almacenado con éxito!', message: newMessage});

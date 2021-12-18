@@ -7,12 +7,12 @@ import Notification from '../ui/notification';
   //Función envio de datos de contacto asíncrono
   //contactDetails------> Esperar recibir los datos de contacto
   async function sendContactData(contactDetails) {
-    //optional: add client-side validation
+
     const response = await fetch("/api/contact", {
       method: "POST",
       //Caden JSON un objecto
       body: JSON.stringify(contactDetails),
-      //Encabezado del tipo  de contenid en la aplicación JSON
+      //Encabezado del tipo  de contenido en la aplicación JSON
       //Para ahcer  que el backend sea consistente de que esta solicitud llevará datos JSON
       headers: {
         "Content-Type": "application/json ",
@@ -49,11 +49,8 @@ function ContactForm() {
 
 
    async function sendMessageHandler(event){
+       
        event.preventDefault();
-       //console.log(enteredEmail)
-
-       //optional: add client-side validation
-
        setRequestStatus('pending');
 
        try{

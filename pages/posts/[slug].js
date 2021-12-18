@@ -33,7 +33,7 @@ export  function getStaticProps(context){
   };
 }
 
-//Obtener rutas estáticas para avisar a NextJS qué valores deneríamos pregenerar
+//Obtener rutas estáticas para avisar a NextJS qué valores deberíamos pregenerar
 export function getStaticPaths(){
 
   //Todos los nombres de archivos de las publicaciones
